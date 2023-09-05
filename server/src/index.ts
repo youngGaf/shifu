@@ -4,8 +4,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { itemsRouter } from "./items/items.router";
-import { errorHandler } from "./middleware/error.middleware";
-import { notFoundHandler } from "./middleware/not-found.middleware";
+import { errorHandler } from "./middlewares/error.middleware";
+import { notFoundHandler } from "./middlewares/not-found.middleware";
 
 
 dotenv.config();
