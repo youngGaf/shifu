@@ -4,7 +4,7 @@ export const connect = async () => {
   if (mongoose.connection.readyState === 0) {
     try {
       await mongoose.connect(`${process.env.MONGO_URI}`).then(() => {
-        console.log('successfully connected to mongodb atlas');
+        console.log('Successfully connected to mongodb atlas');
       });
     } catch (err: any) {
       console.error('App starting error:', err.stack);

@@ -6,11 +6,13 @@ import morgan from "morgan";
 import { itemsRouter } from "./items/items.router";
 import { errorHandler } from "./middlewares/error.middleware";
 import { notFoundHandler } from "./middlewares/not-found.middleware";
+import { connect, disconnect } from "./models/db/database.connection.";
 
 
 dotenv.config();
 
 if(!process.env.PORT){
+    disconnect();
     process.exit(1)
 }
 
@@ -39,4 +41,5 @@ app.use(notFoundHandler);
 /* Server Activation */
 app.listen(PORT, () =>{
     console.log(`Listening on port ${PORT}`);
+    connect();
 })

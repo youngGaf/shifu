@@ -1,7 +1,7 @@
 {
   "name": "shifu",
   "version": "1.0.0",
-  "description": "wushu training app API",
+  "description": "Wushu training app API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,6 +26,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@typegoose/typegoose": "^11.5.0",
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
