@@ -29,7 +29,7 @@ export class Shifu{
     @prop()
     public username?: string;
 
-    @prop({ ref: () => User, type: () => String })
+    @prop({ ref: () => 'User', type: () => String })
     public trainees?: Ref<User, string>[];
 }
 

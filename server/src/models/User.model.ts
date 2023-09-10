@@ -1,6 +1,6 @@
 import { getModelForClass, prop, Ref } from '@typegoose/typegoose';
 import { Shifu } from './Shifu.model';
-import { Group } from './Group.models';
+import { Group } from './Group.model';
 
 export enum Roles {
     Tr = 'Trainee',
@@ -50,10 +50,10 @@ export class User{
     @prop()
     public username?: string
 
-    @prop({ ref: () =>  Shifu, type: () => String })
+    @prop({ ref: () =>  'Shifu', type: () => String })
     public shifu?: Ref<Shifu, string>;
 
-    @prop({ ref: () => Group, type: () => String})
+    @prop({ ref: () => 'Group', type: () => String})
     public group?: Ref<Group, string>[];
 
 }

@@ -11,7 +11,7 @@ export class Group{
     @prop()
     public groupName?: string;
 
-    @prop({ ref: () =>  Shifu, type: () => String })
+    @prop({ ref: () =>  'Shifu', type: () => String })
     public shifu?: Ref<Shifu, string>;
 
     @prop({ ref: () => User, type: () => String })

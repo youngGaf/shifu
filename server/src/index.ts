@@ -7,6 +7,8 @@ import { itemsRouter } from "./items/items.router";
 import { errorHandler } from "./middlewares/error.middleware";
 import { notFoundHandler } from "./middlewares/not-found.middleware";
 import { connect, disconnect } from "./models/db/database.connection.";
+import { userRouter } from "./routes/user.routes";
+import { shifuRouter } from "./routes/shifu.routes";
 
 
 dotenv.config();
@@ -30,6 +32,8 @@ app.use(express.json());
  * Routing
  */
  app.use("/api/menu/items", itemsRouter);
+ app.use("/api/users", userRouter);
+ app.use("/api/shifu/", shifuRouter);
 
 /**
  * Error handling
