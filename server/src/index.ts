@@ -9,6 +9,7 @@ import { notFoundHandler } from "./middlewares/not-found.middleware";
 import { connect, disconnect } from "./models/db/database.connection.";
 import { userRouter } from "./routes/user.routes";
 import { shifuRouter } from "./routes/shifu.routes";
+import { groupRouter } from "./routes/group.routes";
 
 
 dotenv.config();
@@ -31,9 +32,10 @@ app.use(express.json());
 /**
  * Routing
  */
- app.use("/api/menu/items", itemsRouter);
- app.use("/api/users", userRouter);
- app.use("/api/shifu/", shifuRouter);
+app.use("/api/menu/items", itemsRouter);
+app.use("/api/users", userRouter);
+app.use("/api/shifu/", shifuRouter);
+app.use("/api/group/", groupRouter);
 
 /**
  * Error handling

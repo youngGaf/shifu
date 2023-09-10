@@ -1,6 +1,7 @@
 import { Shifu } from '../models/Shifu.model';
 import { Request, Response } from 'express';
-import { createShifu,
+import { 
+    createShifu,
     findAllShifus,
     findShifuById,
     findShifuByUsername,
@@ -36,6 +37,19 @@ export const getShifu =async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const shifu = await findShifuById(id);
+        if(shifu){
+            return res.status(200).send(shifu);
+        }
+        res.status(404).send('user does not exist');
+    } catch (e: any) {
+        res.status(500).send(e.message);
+    }
+};
+
+export const getShifuByUsername =async (req: Request, res: Response) => {
+    try {
+        const { username } = req.params;
+        const shifu = await findShifuByUsername(username);
         if(shifu){
             return res.status(200).send(shifu);
         }

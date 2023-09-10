@@ -1,6 +1,7 @@
 import { User } from '../models/User.model';
 import { Request, Response } from 'express';
-import { createUser, 
+import { 
+    createUser, 
     findAllUsers, 
     findUserById,
     findUserByUsername, 
@@ -35,6 +36,19 @@ export const getUser =async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const user = await findUserById(id);
+        if(user){
+            return res.status(200).send(user);
+        }
+        res.status(404).send('user does not exist');
+    } catch (e: any) {
+        res.status(500).send(e.message);
+    }
+};
+
+export const getUserByUsername = async (req: Request, res: Response) => {
+    try {
+        const { username } = req.params;
+        const user = await findUserByUsername(username);
         if(user){
             return res.status(200).send(user);
         }

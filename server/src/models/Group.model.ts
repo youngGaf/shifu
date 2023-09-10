@@ -9,10 +9,10 @@ export class Group{
     public _id?: string;
 
     @prop()
-    public groupName?: string;
+    public groupName!: string;
 
     @prop({ ref: () =>  'Shifu', type: () => String })
-    public shifu?: Ref<Shifu, string>;
+    public shifu!: Ref<Shifu, string>;
 
     @prop({ ref: () => User, type: () => String })
     public trainees?: Ref<User, string>[];
