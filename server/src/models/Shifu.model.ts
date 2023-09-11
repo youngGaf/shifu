@@ -1,5 +1,5 @@
 import { getModelForClass, prop, Ref } from "@typegoose/typegoose";
-import { Roles, User } from "./User.model";
+import { User } from "./User.model";
 
 export class Shifu{
     @prop()
@@ -17,8 +17,8 @@ export class Shifu{
     @prop({required: true})
     public password!: string;
 
-    @prop({ required: true, type: String, default: "Shifu", enum: Roles })
-    public role!: Roles[];
+    @prop({ required: true, type: String, default: "Shifu" })
+    public role!: string;
 
     @prop()
     public avatar?: string;

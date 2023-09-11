@@ -1,4 +1,5 @@
 import { Group } from "../models/Group.model";
+import {v4 as uuidv4} from 'uuid';
 import { Request, Response } from 'express';
 import { 
     createGroup, 
@@ -10,11 +11,13 @@ import {
 
 export const createNewGroup = async (req: Request, res: Response) => {
     try {
+        const _id: string = uuidv4();
         const { shifu, groupName } = req.body;
         if(!shifu || !groupName){
             return res.status(400).send('ensure all data are filled');
         }
-        const group: Group = await createGroup(req.body);
+        
+        const group: Group = await createGroup({ _id, ...req.body});
         res.status(201).json({message:'Shifu successfully created', data: group});
     } catch (e: any) {
         res.status(500).send(e.message);

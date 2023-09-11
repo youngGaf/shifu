@@ -34,8 +34,8 @@ app.use(express.json());
  */
 app.use("/api/menu/items", itemsRouter);
 app.use("/api/users", userRouter);
-app.use("/api/shifu/", shifuRouter);
-app.use("/api/group/", groupRouter);
+app.use("/api/shifus", shifuRouter);
+app.use("/api/groups", groupRouter);
 
 /**
  * Error handling

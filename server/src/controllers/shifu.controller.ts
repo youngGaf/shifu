@@ -1,4 +1,5 @@
 import { Shifu } from '../models/Shifu.model';
+import {v4 as uuidv4} from 'uuid';
 import { Request, Response } from 'express';
 import { 
     createShifu,
@@ -10,11 +11,14 @@ import {
 
 export const createNewShifu = async (req: Request, res: Response) => {
     try {
+        const _id: string = uuidv4();
+
         const { email, location, password } = req.body;
         if(!email || !password || !location){
             return res.status(400).send('ensure all data are filled');
         }
-        const shifu: Shifu = await createShifu(req.body);
+        
+        const shifu: Shifu = await createShifu({_id , ...req.body});
         res.status(201).json({message:'Shifu successfully created', data: shifu});
     } catch (e: any) {
         res.status(500).send(e.message);

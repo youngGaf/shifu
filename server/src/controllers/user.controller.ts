@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { User } from '../models/User.model';
 import { Request, Response } from 'express';
 import { 
@@ -9,14 +10,17 @@ import {
 
 export const createNewUser = async (req: Request, res: Response) => {
     try {
+        const _id: string = uuidv4();
         const { email, location, password } = req.body;
+
         if(!email || !password || !location){
             return res.status(400).send('ensure all data are filled');
         }
-        const user: User = await createUser(req.body);
+
+        const user: User = await createUser({ _id, ...req.body});
         res.status(201).json({message:'user successfully created', data: user});
     } catch (e: any) {
-        res.status(500).send(e.message);
+        res.status(500).json({status: 500, message: e.message});
     }
 };
 

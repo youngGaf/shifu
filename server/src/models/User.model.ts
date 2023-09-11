@@ -33,7 +33,7 @@ export class User{
     public email!: string;
 
     @prop({ required: true, type: String, default: 'Trainee', enum: Roles })
-    public role!: Roles[];
+    public role!: Roles;
 
     @prop()
     public avatar?: string;

@@ -7,7 +7,7 @@ export const createGroup = async (group: Group): Promise<Group> => {
 };
 
 export const findGroupById = async (_id: string): Promise<Group | null> => {
-    const group = await GroupModel.findById(_id);
+    const group = await GroupModel.findById(_id).populate('shifu');
     return group
 };
 
